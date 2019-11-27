@@ -13,8 +13,10 @@
 #include "../General/Ship.h"
 #include "../General/planet.h"
 #include "../General/Star.h"
+#include "../General/Blackhole.h"
 #include "../General/SpaceStation.h"
 #include "../General/SpaceStationUI.h"
+#include "../General/asteroid.h"
 #include "../Physics/BasicMovementFPSlimit.h"
 #include "../Physics/TimeData.h"
 #include "../Physics/Audio.h"
@@ -22,4 +24,6 @@
 #include "../Level_Generation/Ellers_Maze.h"
 #include "../AI/AI.h"
 #include "../General/Sector.h"
+#include "../General/GalaxyControl.h"
+#include "../General/Constants.h"
 void run_demo(gpRender gr);

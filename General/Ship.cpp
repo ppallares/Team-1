@@ -57,11 +57,11 @@ Ship::Ship(const Ship& ship){
 
 };
 
-Ship::Ship(SDL_Rect dBox, SDL_Texture* aTex): Sprite(dBox, aTex) {weaponType = 1; renderOrder = 1;};
+Ship::Ship(SDL_Rect dBox, SDL_Texture* aTex): Sprite(dBox, aTex) {weaponType = 1; renderOrder = 1; type = 1;};
 
-Ship::Ship(SDL_Rect dBox, SDL_Texture* aTex, int anim): Sprite(dBox, aTex, anim) {weaponType = 1; renderOrder = 1;};
+Ship::Ship(SDL_Rect dBox, SDL_Texture* aTex, int anim): Sprite(dBox, aTex, anim) {weaponType = 1; renderOrder = 1; type = 1;};
 
-Ship::Ship(SDL_Rect dBox, SDL_Texture* aTex, int anim, int mass): Sprite(dBox, aTex, anim), mass{mass} {weaponType = 1; renderOrder = 1;};
+Ship::Ship(SDL_Rect dBox, SDL_Texture* aTex, int anim, int mass): Sprite(dBox, aTex, anim), mass{mass} {weaponType = 1; renderOrder = 1; type = 1;};
 
 Ship::~Ship()
 {
@@ -133,9 +133,9 @@ void Ship::updateMovement(std::vector<Sprite*> &osSprite, int ZONE_WIDTH, int ZO
 	{
 		speed = MAX_SPEED;
 	}
-	else if(speed < -MAX_SPEED)
+	else if(speed < 0)
 	{
-		speed = -MAX_SPEED;
+		speed = 0;
 	}
 	if(rotationSpeed > MAX_ROTATIONSPEED)
 	{
@@ -298,8 +298,8 @@ int Ship::getMass()
 
 Projectile Ship::fireWeapon(SDL_Texture* texture)
 {
-	int X = getTrueX() + (getH()/2.0)+  (getH()/2.0)*sin(getAngle()*.0174533);
-	int Y = getTrueY()+ (getW()/2.0)+ (getW()/2.0)*-cos(getAngle()*.0174533);
+	int X = getTrueX() + (getH()/2.0)+  (getH()/2.0)*sin(getAngle()*1.1*.0174533);
+	int Y = getTrueY()+ (getW()/2.0)+ (getW()/2.0)*-cos(getAngle()*1.1*.0174533);
 	SDL_Rect ldb = {X, Y, 2, 10};
 	Projectile laser(ldb, texture, weaponType);	
 	laser.setAngle(getAngle());
